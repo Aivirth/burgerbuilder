@@ -13,7 +13,11 @@ export default props => {
   return (
     <div className={classes.BuildControls}>
       {controls.map(control => (
-        <BuildControl key={control.label} label={control.label} />
+        <BuildControl
+          added={() => props.ingredientAdded(control.type)}
+          key={control.label}
+          label={control.label}
+        />
       ))}
     </div>
   );
