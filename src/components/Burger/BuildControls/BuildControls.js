@@ -15,6 +15,7 @@ export default props => {
       {controls.map(control => (
         <BuildControl
           added={() => props.ingredientAdded(control.type)}
+          removed={() => props.ingredientRemoved(control.type)}
           key={control.label}
           label={control.label}
         />
