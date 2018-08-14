@@ -18,6 +18,7 @@ export default props => {
           removed={() => props.ingredientRemoved(control.type)}
           key={control.label}
           label={control.label}
+          disabled={props.disabled[control.type]}
         />
       ))}
     </div>
