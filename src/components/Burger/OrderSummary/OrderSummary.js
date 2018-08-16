@@ -14,7 +14,7 @@ export default props => {
   return (
     <React.Fragment>
       <h3>
-        Your Order : <strong>{props.totalPrice}$</strong>
+        Your Order : <strong>{props.totalPrice.toFixed(2)}$</strong>
       </h3>
       <p>A delicious burger with the following ingredients:</p>
       <ul>{ingredientSummary}</ul>
