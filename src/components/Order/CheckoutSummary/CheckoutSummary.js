@@ -14,10 +14,10 @@ export default props => {
       <div style={{ styles }}>
         <Burger ingredients={props.ingredients} />
       </div>
-      <Button clicked btnType="Danger">
+      <Button clicked={props.checkoutCancelled} btnType="Danger">
         CANCEL
       </Button>
-      <Button clicked btnType="Success">
+      <Button clicked={props.checkoutContinued} btnType="Success">
         CONTINUE
       </Button>
     </div>
