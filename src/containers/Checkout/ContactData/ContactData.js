@@ -92,7 +92,7 @@ export default class ContactData extends Component {
     let isValid = false;
 
     if (rules.required) {
-      isValid = value.trim() !== "" && isValid;
+      isValid = value.trim() !== "" && !isValid;
     }
 
     if (rules.minLength) {
@@ -184,6 +184,8 @@ export default class ContactData extends Component {
             elementConfig={formElement.config.elementConfig}
             value={formElement.config.value}
             changed={event => this.inputChangedHandler(event, formElement.id)}
+            invalid={!formElement.config.valid}
+            shouldValidate={formElement.config.validation}
           />
         ))}
 
