@@ -14,7 +14,12 @@ export default class ContactData extends Component {
           type: "text",
           placeholder: "Your Name"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true,
+          minLength: 3
+        },
+        valid: false
       },
       street: {
         elementType: "input",
@@ -22,7 +27,12 @@ export default class ContactData extends Component {
           type: "text",
           placeholder: "Street"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true,
+          minLength: 3
+        },
+        valid: false
       },
       zipCode: {
         elementType: "input",
@@ -30,7 +40,13 @@ export default class ContactData extends Component {
           type: "text",
           placeholder: "Zip Code"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true,
+          minLength: 5,
+          maxLength: 6
+        },
+        valid: false
       },
       country: {
         elementType: "input",
@@ -38,7 +54,12 @@ export default class ContactData extends Component {
           type: "text",
           placeholder: "Country"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true,
+          minLength: 3
+        },
+        valid: false
       },
       email: {
         elementType: "input",
@@ -46,7 +67,12 @@ export default class ContactData extends Component {
           type: "email",
           placeholder: "Your E-Mail"
         },
-        value: ""
+        value: "",
+        validation: {
+          required: true,
+          minLength: 3
+        },
+        valid: false
       },
       deliveryMethod: {
         elementType: "select",
@@ -60,6 +86,24 @@ export default class ContactData extends Component {
       }
     },
     loading: false
+  };
+
+  checkValidity = (value, rules) => {
+    let isValid = false;
+
+    if (rules.required) {
+      isValid = value.trim() !== "" && isValid;
+    }
+
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength && isValid;
+    }
+
+    if (rules.maxLength) {
+      isValid = value.length <= rules.maxLength && isValid;
+    }
+
+    return isValid;
   };
 
   inputChangedHandler = (event, inputIdentifier) => {
@@ -77,6 +121,10 @@ export default class ContactData extends Component {
     const updatedFormElement = { ...updatedOrderForm[inputIdentifier] };
 
     updatedFormElement.value = event.target.value;
+    updatedFormElement.valid = this.checkValidity(
+      updatedFormElement.value,
+      updatedFormElement.validation
+    );
 
     updatedOrderForm[inputIdentifier] = updatedFormElement;
     this.setState({
