@@ -5,7 +5,7 @@ export default props => {
   const { elementType, elementConfig, value, changed } = props;
   const inputClasses = [classes.inputElement];
 
-  if (props.invalid && props.shouldValidate) {
+  if (props.invalid && props.shouldValidate && props.touched) {
     inputClasses.push(classes.Invalid);
   }
 
