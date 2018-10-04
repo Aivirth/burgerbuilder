@@ -17,8 +17,17 @@
 
 .Success {
   color: #5c9210;
+  margin: 10px;
+  padding: 10px;
 }
 
 .Danger {
   color: #944317;
+  margin: 10px;
+  padding: 10px;
+}
+
+.Button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
 }
