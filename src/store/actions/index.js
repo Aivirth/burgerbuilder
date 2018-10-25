@@ -6,5 +6,6 @@ export {
 export {
   purchaseBurgerStart,
   purchaseBurgerFail,
-  purchaseBurgerSuccess
+  purchaseBurgerSuccess,
+  purchaseBurger
 } from "./order";
