@@ -14,3 +14,5 @@ export {
   fetchOrdersSuccess,
   fetchOrdersStart
 } from "./order";
+
+export { auth } from "./auth";
