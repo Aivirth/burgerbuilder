@@ -37,14 +37,16 @@ class Auth extends Component {
         valid: false,
         touched: false
       }
-    }
+    },
+    isSignup: true
   };
 
   submitHandler = event => {
     event.preventDefault();
     this.props.onAuth(
       this.state.controls.email.value,
-      this.state.controls.password.value
+      this.state.controls.password.value,
+      this.state.isSignup
     );
   };
 
@@ -89,6 +91,12 @@ class Auth extends Component {
     });
   };
 
+  switchAuthModeHandler = () => {
+    this.setState(prevState => {
+      return { isSignup: !prevState.isSignup };
+    });
+  };
+
   render() {
     const formElementsArray = [];
     for (let key in this.state.controls) {
@@ -112,18 +120,25 @@ class Auth extends Component {
             touched={formElement.config.touched}
           />
         ))}
-
-        <Button btnType="Success">Log In</Button>
       </form>
     );
 
-    return <div className={classes.Auth}>{form}</div>;
+    return (
+      <div className={classes.Auth}>
+        {form}
+        <Button btnType="Success">Log In</Button>
+        <Button clicked={this.switchAuthModeHandler} btnType="Danger">
+          Switch to {this.state.isSignup ? "SignIn" : "SignUp"}
+        </Button>
+      </div>
+    );
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: (email, password) => dispatch(actions.auth(email, password))
+    onAuth: (email, password, isSignup) =>
+      dispatch(actions.auth(email, password, isSignup))
   };
 };
 
