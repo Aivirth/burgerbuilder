@@ -43,6 +43,7 @@ class Auth extends Component {
 
   submitHandler = event => {
     event.preventDefault();
+
     this.props.onAuth(
       this.state.controls.email.value,
       this.state.controls.password.value,
@@ -120,13 +121,14 @@ class Auth extends Component {
             touched={formElement.config.touched}
           />
         ))}
+
+        <Button btnType="Success">Log In</Button>
       </form>
     );
 
     return (
       <div className={classes.Auth}>
         {form}
-        <Button btnType="Success">Log In</Button>
         <Button clicked={this.switchAuthModeHandler} btnType="Danger">
           Switch to {this.state.isSignup ? "SignIn" : "SignUp"}
         </Button>
