@@ -29,7 +29,7 @@ export default props => {
         disabled={!props.purchaseable}
         onClick={props.ordered}
       >
-        ORDER NOW
+        {props.isAuth ? "ORDER NOW" : "SiGNUP TO ORDER"}
       </button>
     </div>
   );
