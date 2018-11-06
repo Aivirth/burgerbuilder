@@ -10,10 +10,6 @@ export default class extends React.Component {
     );
   }
 
-  componentWillUpdate() {
-    console.log("[modal] Will Update");
-  }
-
   render() {
     return (
       <React.Fragment>
